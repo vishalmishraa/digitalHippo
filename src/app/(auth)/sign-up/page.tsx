@@ -29,9 +29,9 @@ const Page = () => {
   })
 
 
-  const {data} = trpc.anyApiRoute.useQuery();
+  const {mutate,isLoading} = trpc.auth.createPayloadUser.useMutation({
 
-  console.log(data);
+  })
   
   
   
@@ -41,6 +41,9 @@ const Page = () => {
     password,
   }: TAuthCredentialsValidator) => {
     // Call the API
+    mutate({
+      email,password
+    })
   }
 
   return (
