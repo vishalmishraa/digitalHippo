@@ -29,11 +29,7 @@ const Page = () => {
   })
 
 
-  const {mutate,isLoading} = trpc.auth.createPayloadUser.useMutation({
-
-  })
-  
-  
+  const {mutate,isLoading} = trpc.auth.createPayloadUser.useMutation({});
   
 
   const onSubmit = ({
