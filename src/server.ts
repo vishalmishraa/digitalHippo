@@ -7,18 +7,16 @@ import { appRouter } from './trpc'
 const app = express()
 const PORT = Number(process.env.PORT) || 3000
 
-const createContext = ({
+
+//it is used to initialize and pass user session to the trpc context or any other context.
+const createContext = ({ req, res }: trpcExpress.CreateExpressContextOptions) => ({
   req,
   res,
-}: trpcExpress.CreateExpressContextOptions) => ({
-  req,
-  res,
-})
+});
 
 
 const start = async () => {
   
-
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
@@ -46,7 +44,9 @@ const start = async () => {
       payload.logger.info(
         `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
       )
-    })
+    });
+
+
   })
 }
 

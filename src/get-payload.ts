@@ -31,9 +31,8 @@ interface Args {
   initOptions?: Partial<InitOptions>
 }
 
-export const getPayloadClient = async ({
-  initOptions,
-}: Args = {}): Promise<Payload> => {
+export const getPayloadClient = async ({ initOptions }: Args = {}): Promise<Payload> => {
+  
   if (!process.env.PAYLOAD_SECRET) {
     throw new Error('PAYLOAD_SECRET is missing')
   }
@@ -47,7 +46,7 @@ export const getPayloadClient = async ({
     cached.promise = payload.init({
       email:{
         transport: tarnsposter,
-        fromAddress:"onboarding@resend.dev",
+        fromAddress:"hi@vishalmishra.tech",
         fromName:'DigitalHippo'
       },
       secret: process.env.PAYLOAD_SECRET,
